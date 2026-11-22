@@ -26,7 +26,7 @@ TeddyPups UAE · Blutec AI technical assessment
 
 ## Prompt archive
 
-Expand a section to read the prompt text. The implementation prompt is a consolidated specification. [Loom walkthrough outline](LOOM_WALKTHROUGH.md)
+Expand a section to read the prompt text. The implementation prompt is a consolidated specification.
 
 <details>
 <summary>ImageGen prompt</summary>

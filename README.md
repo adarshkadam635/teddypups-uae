@@ -76,6 +76,6 @@ The form validates input and creates a `mailto:` draft. It sends no data to a se
 
 The linked GitHub repository is private. Reviewers can use the public demo and the source archive, or receive repository access directly.
 
-See the [test results](TESTING_CHECKLIST.md), [AI usage log](AI_USAGE_LOG.md), and [Loom recording outline](LOOM_WALKTHROUGH.md).
+See the [test results](TESTING_CHECKLIST.md) and [AI usage log](AI_USAGE_LOG.md).
 
 
