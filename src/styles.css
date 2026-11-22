@@ -1128,14 +1128,52 @@ main [id] { scroll-margin-top: 92px; }
 @keyframes sign-wobble { from { rotate: -5deg; } 65% { rotate: 2deg; } to { rotate: 0deg; } }
 
 /* Circular portraits on the puppy catalog and adoption preview. */
-.catalog-page { background: radial-gradient(#2038ae14 .7px, transparent .8px) 0 0 / 17px 17px, var(--paper); }
-.catalog-page .page-heading { background: transparent; padding-block: clamp(2.1rem, 4.5vw, 4.15rem) .85rem; }
-.catalog-page .page-heading h1 { color: var(--accent-ink); font-size: clamp(3rem, 6.5vw, 5.6rem); }
+.catalog-page { background: var(--paper); }
+.catalog-heading {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center;
+  gap: clamp(1rem, 4vw, 4rem); position: relative; isolation: isolate;
+  margin-top: clamp(1.7rem, 3.3vw, 3.15rem); padding: clamp(1.35rem, 4.7vw, 4.25rem);
+  border: 1px solid #d9aa96; border-radius: clamp(1.35rem, 3vw, 2.75rem);
+  background: radial-gradient(#ae6a4826 .75px, transparent 1px) 0 0 / 19px 19px, var(--hero-background);
+  box-shadow: 0 4px #ad705a22;
+}
+.catalog-heading .eyebrow { display: flex; align-items: center; gap: .45rem; }
+.catalog-heading h1 {
+  margin-block: .45rem .75rem; color: var(--ink); font: 700 clamp(3rem, 7vw, 6rem)/.96 Georgia, serif;
+  letter-spacing: -.066em; text-wrap: balance;
+}
+.catalog-heading h1 em { color: var(--accent-ink); font: italic 400 1.13em/.9 var(--serif); letter-spacing: -.035em; }
+.catalog-heading .lede { max-width: 34ch; }
+.catalog-heading-art { position: relative; width: clamp(8.25rem, 23vw, 19rem); padding: .45rem 12% .45rem 15%; }
+.catalog-heading-photo {
+  display: block; padding: .36rem; rotate: 7deg; border-radius: 49% 49% 1rem 1rem;
+  border: 1px solid #739285; background: var(--secondary); box-shadow: 4px 5px #754d3d26;
+}
+.catalog-heading-photo img { width: 100%; aspect-ratio: 1.05; object-fit: cover; border-radius: inherit; }
+.catalog-heading-art .puppy-peek { position: absolute; width: 49%; bottom: -.35rem; left: -2%; rotate: -8deg; }
+.catalog-heading-heart, .catalog-heading-sparkle { position: absolute; width: clamp(15px, 2.5vw, 34px); height: auto; }
+.catalog-heading-heart { top: 13%; left: 1%; rotate: -17deg; color: var(--accent-ink); fill: var(--accent); }
+.catalog-heading-sparkle { right: 0; top: 23%; color: #426c5d; fill: var(--secondary); }
 .catalog-page .list-section { padding-top: 1rem; }
-.catalog-page .filter-panel { gap: .4rem; border-color: #8291c6; border-radius: 1rem; box-shadow: 3px 4px 0 #2038ae13; }
+.catalog-page .filter-panel { gap: .6rem; border-color: #dbc0af; border-radius: 1.25rem; box-shadow: 0 3px #b5846921; }
 .catalog-page .catalog-filter { align-items: center; }
-.catalog-page .catalog-filter > span { color: var(--dark); font-size: .86rem; }
+.catalog-page .catalog-filter > span { display: flex; align-items: center; gap: .45rem; color: var(--dark); font-size: .86rem; }
+.catalog-filter > span svg { color: var(--accent-ink); flex: none; }
+.catalog-page .catalog-filter-options { gap: .5rem; }
+.catalog-page .catalog-filter-button { border-color: #d6b7a7; background: var(--paper); }
+.catalog-page .catalog-filter-button:hover { background: var(--secondary); }
+.catalog-page .catalog-filter-button[aria-pressed="true"] { border-color: #345d50; background: #345d50; }
+.catalog-page .catalog-filter-button[aria-pressed="true"]:hover { background: #25493d; }
 .catalog-page .result-count { margin-block: 1.35rem .95rem; }
+
+@media (max-width: 600px) {
+  .catalog-heading { grid-template-columns: minmax(0, 1fr) minmax(4.75rem, 28%); gap: .55rem; }
+  .catalog-heading h1 { font-size: clamp(2.4rem, 8.8vw, 3.45rem); }
+  .catalog-heading h1 em { display: block; }
+  .catalog-heading .lede { font-size: .92rem; line-height: 1.45; }
+  .catalog-heading-art { width: 100%; padding-inline: 8%; }
+  .catalog-heading-art .puppy-peek { width: 56%; left: -6%; }
+}
 .catalog-page .puppy-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(1.65rem, 4vw, 3.35rem) clamp(.6rem, 1.8vw, 1.4rem); }
 .catalog-page .puppy-card { padding: .55rem clamp(.4rem, .7vw, .7rem) .4rem; border: 0; border-radius: 1rem; overflow: visible; background: transparent; text-align: center; }
 .catalog-page .card-arrow { display: none; }

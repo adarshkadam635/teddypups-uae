@@ -1,12 +1,15 @@
 ﻿import { Link, useSearchParams } from 'react-router-dom'
+import { Heart, MapPin, PawPrint, Sparkle } from 'lucide-react'
 import { PageHeading } from '../components/Layout.jsx'
-import { PuppyGrid } from '../components/PuppyCard.jsx'
+import { Photo, PuppyGrid } from '../components/PuppyCard.jsx'
+import { PuppyIllustration } from '../components/PuppyCompanion.jsx'
+import { visitPhoto } from '../data/photos.js'
 import { adoptedPuppies, availablePuppies } from '../data/puppies.js'
 
 const filters = [
-  ['origin', 'Location', [['', 'Everywhere'], ['local', 'In Dubai'], ['imported', 'Imported'], ['korean', 'Korean Teacup']]],
-  ['breed', 'Breed', [['maltipoo', 'Maltipoo'], ['pomeranian', 'Pomeranian'], ['poodle', 'Poodle'], ['cavapoo', 'Cavapoo'], ['shih-tzu', 'Shih Tzu']]],
-  ['gender', 'Boy or girl', [['male', 'Boys'], ['female', 'Girls']]],
+  ['origin', 'Location', MapPin, [['', 'Everywhere'], ['local', 'In Dubai'], ['imported', 'Imported'], ['korean', 'Korean Teacup']]],
+  ['breed', 'Breed', PawPrint, [['maltipoo', 'Maltipoo'], ['pomeranian', 'Pomeranian'], ['poodle', 'Poodle'], ['cavapoo', 'Cavapoo'], ['shih-tzu', 'Shih Tzu']]],
+  ['gender', 'Boy or girl', Heart, [['male', 'Boys'], ['female', 'Girls']]],
 ]
 
 const genderWords = new Map([['male', 'boy'], ['female', 'girl']])
@@ -38,11 +41,23 @@ export function Puppies() {
   }
 
   return <div className="catalog-page">
-    <PageHeading label="The puppy catalog" title="Available puppies"><p>Browse by breed, location, or gender. Availability is shown as recorded at the time of the catalog snapshot.</p></PageHeading>
+    <header className="wrap catalog-heading">
+      <div>
+        <p className="eyebrow"><PawPrint size={16} aria-hidden="true" /> The puppy catalog</p>
+        <h1>Available <em>puppies</em></h1>
+        <p className="lede">Find a little face you’d love to meet. Browse by breed, location, or gender.</p>
+      </div>
+      <div className="catalog-heading-art" aria-hidden="true">
+        <span className="catalog-heading-photo"><Photo photo={visitPhoto} alt="" loading="eager" /></span>
+        <PuppyIllustration peek />
+        <Heart className="catalog-heading-heart" />
+        <Sparkle className="catalog-heading-sparkle" />
+      </div>
+    </header>
     <section className="wrap section list-section catalog-portraits" aria-label="Available puppy catalog">
       <div className="filter-panel">
-        {filters.map(([key, label, options]) => <div className="catalog-filter" role="group" aria-label={label} key={key}>
-          <span>{label}</span>
+        {filters.map(([key, label, Icon, options]) => <div className="catalog-filter" role="group" aria-label={label} key={key}>
+          <span><Icon size={16} aria-hidden="true" />{label}</span>
           <div className="catalog-filter-options">
             {options.map(([value, text]) => <button className="catalog-filter-button" type="button" key={value} aria-pressed={selected[key] === value} onClick={() => toggle(key, value)}>{text}</button>)}
           </div>
