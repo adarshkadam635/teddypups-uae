@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.vite/
+.vercel/
+playwright-report/
+test-results/
+.env
+.env.*
+!.env.example
+.clone-any-website/
